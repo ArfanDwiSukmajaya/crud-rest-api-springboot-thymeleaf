@@ -19,9 +19,9 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col-2">Id</th>
+                    <th scope="col-2">No</th>
                     <th scope="col-2">Name</th>
-                    <th scope="col-2">Region date</th>
+<!--                    <th scope="col-2">Region date</th>-->
                     <th scope="col-6">Action</th>
                   </tr>
                 </thead>
@@ -29,8 +29,9 @@
                     <tr>
                         <td th:text="${itrStat.index + 1}">id</td>
                         <td th:text="${region.name}">name</td>
-                        <td th:text="${region.region_date}"></td>
+<!--                        <td th:text="${region.region_date}"></td>-->
                         <td class="d-flex gap-3">
+                            <a th:href="@{/region/detail/{id} (id=${region.id})}"  class="btn btn-primary">Detil</a>
                             <a th:href="@{/region/update/{id} (id=${region.id})}" class="btn btn-warning">Edit</a>
                             <form th:action="@{/region/{id} (id=${region.id})}" th:method="DELETE">
                                 <button type="submit" class="btn btn-danger"

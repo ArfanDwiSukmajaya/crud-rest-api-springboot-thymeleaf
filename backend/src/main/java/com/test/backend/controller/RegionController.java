@@ -34,9 +34,12 @@ public class RegionController {
 
 //    Create Data
     @PostMapping
-    public ResponseEntity<Region> create(@RequestBody RegionRequest regionRequest){
-        System.out.println("Tanggal " + regionRequest.getRegion_date());
-        return new ResponseEntity<>(regionService.create(regionRequest), HttpStatus.CREATED);
+//    public ResponseEntity<Region> create(@RequestBody RegionRequest regionRequest){
+//        System.out.println("Tanggal " + regionRequest.getRegion_date());
+//        return new ResponseEntity<>(regionService.create(regionRequest), HttpStatus.CREATED);
+//    }
+    public ResponseEntity<Region> create(@RequestBody Region region){
+        return new ResponseEntity<>(regionService.create(region), HttpStatus.CREATED);
     }
 
 // Update data

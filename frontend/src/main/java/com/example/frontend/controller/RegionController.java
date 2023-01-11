@@ -19,6 +19,12 @@ public class RegionController {
         return "region/index";
     }
 
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable Long id, Model model){
+        model.addAttribute("region", regionService.getById(id));
+        return "region/detail";
+    }
+
     // Create Data
     @GetMapping("/create")
     public String create(Region region){
@@ -26,21 +32,18 @@ public class RegionController {
     }
     
     @PostMapping
-
     public String created(Region region){
         System.out.println("tanggl" + region.getRegion_date());
         regionService.create(region);
         return "redirect:/region";
 
     }
-
-
 //    Update
-@GetMapping("/update/{id}")
-public String update(@PathVariable Long id, Model model){
-    model.addAttribute("region", regionService.getById(id));
-    return "region/update_form";
-}
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable Long id, Model model){
+        model.addAttribute("region", regionService.getById(id));
+        return "region/update_form";
+    }
 
     @PutMapping("/{id}")
     public String updated(@PathVariable Long id, Region region){
@@ -49,11 +52,11 @@ public String update(@PathVariable Long id, Model model){
     }
 
 //    Delete data
-@DeleteMapping("/{id}")
-public String deleted(@PathVariable Long id){
-    regionService.delete(id);
-    return "redirect:/region";
-}
+    @DeleteMapping("/{id}")
+    public String deleted(@PathVariable Long id){
+        regionService.delete(id);
+        return "redirect:/region";
+    }
 
 
 }

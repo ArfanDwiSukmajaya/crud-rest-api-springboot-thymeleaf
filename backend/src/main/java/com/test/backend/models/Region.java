@@ -25,7 +25,8 @@ public class Region {
     String name;
 
     @Column(columnDefinition = "date null")
-    LocalDate region_date;
+//    LocalDate region_date;
+    String region_date;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)

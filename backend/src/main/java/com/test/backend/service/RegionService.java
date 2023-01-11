@@ -8,10 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,26 +34,26 @@ public class RegionService {
 
 //    Create data
 
-//    public Region create(Region region) {
-//        if (region.getId() != null) {
-//            throw new ResponseStatusException(HttpStatus.CONFLICT, "Region already exist");
-//        }
-//        if (regionRepository.findByName(region.getName()).isPresent()) {
-//            throw new ResponseStatusException(HttpStatus.CONFLICT, "Region name already exist");
-//        }
-//        return regionRepository.save(region);
-//    }
-
-    public Region create(RegionRequest regionRequest){
-        Region region = new Region();
-        region.setId(regionRequest.getId());
-        region.setName(regionRequest.getName());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(regionRequest.getRegion_date(), formatter);
-        region.setRegion_date(localDate);
+    public Region create(Region region) {
+        if (region.getId() != null) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Region already exist");
+        }
+        if (regionRepository.findByName(region.getName()).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Region name already exist");
+        }
         return regionRepository.save(region);
-
     }
+
+//    public Region create(RegionRequest regionRequest){
+//        Region region = new Region();
+//        region.setId(regionRequest.getId());
+//        region.setName(regionRequest.getName());
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        LocalDate localDate = LocalDate.parse(regionRequest.getRegion_date(), formatter);
+//        region.setRegion_date(localDate);
+//        return regionRepository.save(region);
+//
+//    }
 
 //    update data
     public Region update(Long id, Region region){
